@@ -3,7 +3,13 @@ import { Outlet, NavLink } from "react-router-dom";
 import LogoMarca from "../../assets/LogoMarca.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
 
+import { useCart } from "../../contexts/CartContext";
+
 export function Header() {
+  const { cart } = useCart();
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <main>
       <HeaderPage>
@@ -15,7 +21,12 @@ export function Header() {
             <MapPin size={20} weight="fill" />
             <span>Porto Alegre, RS</span>
           </button>
-          <NavLink to={"/payment"} title="ShoppingCart" className="buy">
+          <NavLink
+            to={"/payment"}
+            title="ShoppingCart"
+            className="buy"
+            data-count={totalItems}
+          >
             <ShoppingCart size={20} weight="fill" />
           </NavLink>
         </div>

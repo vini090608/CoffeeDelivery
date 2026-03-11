@@ -272,6 +272,7 @@ export const PaymentMain = styled.main`
               border: none;
               border-radius: 8px;
               box-shadow: none;
+              cursor: pointer;
             }
           }
         }

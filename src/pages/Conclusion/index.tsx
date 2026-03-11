@@ -3,7 +3,11 @@ import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 
 import Guy from "../../assets/Illustration.svg";
 
+import { useCart } from "../../contexts/CartContext";
+
 export function Conclusion() {
+  const { address, paymentMethod } = useCart();
+
   return (
     <ConclusionDetails>
       <section>
@@ -16,9 +20,14 @@ export function Conclusion() {
             </div>
             <div>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{" "}
+                <strong>
+                  {address?.rua}, {address?.numero}
+                </strong>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>
+                {address?.bairro} - {address?.cidade}, {address?.uf}
+              </p>
             </div>
           </div>
           <div className="tag">
@@ -39,7 +48,7 @@ export function Conclusion() {
             <div>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethod}</strong>
               </p>
             </div>
           </div>

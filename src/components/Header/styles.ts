@@ -46,7 +46,7 @@ export const HeaderPage = styled.header`
     }
 
     .buy::after {
-      content: "2";
+      content: attr(data-count);
       color: var(--white);
       display: flex;
       align-items: center;
